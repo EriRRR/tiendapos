@@ -1,0 +1,40 @@
+appId: com.ertech.tiendapos
+productName: TiendaPos
+copyright: "© 2026 Erick Raúl Ramírez Rodríguez — ErTech Solutions"
+
+directories:
+  output: C:\Users\anton\Documents\Proyectos_ErTech\temp-tiemdapos
+  buildResources: build
+
+files:
+  - dist/**/*
+  - electron/**/*
+  - node_modules/**/*
+  - package.json
+  - "!src/**/*"
+  - "!.git/**/*"
+  - "!cloudflared.exe"
+  - "!release/**/*"
+
+asarUnpack:
+  - node_modules/better-sqlite3/**/*
+  - node_modules/ws/**/*
+
+win:
+  target:
+    - target: nsis
+      arch:
+        - x64
+  icon: public/icon-512.png
+  requestedExecutionLevel: asInvoker
+
+nsis:
+  oneClick: false
+  allowToChangeInstallationDirectory: true
+  createDesktopShortcut: true
+  createStartMenuShortcut: true
+  shortcutName: TiendaPos
+  deleteAppDataOnUninstall: false
+  language: 3082
+
+publish: null
