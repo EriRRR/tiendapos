@@ -147,7 +147,7 @@ export default function AdminPanel() {
 
   const entrarComoTienda = (t) => {
     const esUsuario = t.usuarios?.find(u => u.user_id === session.user.id)
-    if (esUsuario) navigate('/inventario')
+    if (esUsuario) navigate('/ventas')
     else setModalEntrar(t)
   }
 

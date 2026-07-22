@@ -19,8 +19,8 @@ import { supabase } from '../lib/supabase'
 import { useConfiguracion } from '../hooks/useConfiguracion'
 
 const NAV = [
-  { to: '/inventario',    icon: Package,      label: 'Inventario'   },
   { to: '/ventas',        icon: ShoppingCart, label: 'Ventas'       },
+  { to: '/inventario',    icon: Package,      label: 'Inventario'   },
   { to: '/clientes',      icon: Users,        label: 'Clientes'     },
   { to: '/catalogo',      icon: BookOpen,     label: 'Catálogo'     },
   { to: '/etiquetas',     icon: Barcode,      label: 'Etiquetas de Barras' },

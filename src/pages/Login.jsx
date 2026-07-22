@@ -32,7 +32,7 @@ export default function Login() {
     try {
       const result = await signIn(email, password)
       if (result.is_admin) navigate('/admin')
-      else navigate('/inventario')
+      else navigate('/ventas')
     } catch (e) {
       if (e.message === 'TIENDA_DESHABILITADA') {
         setTiendaDeshabilitada(e.nombre || 'Tu tienda')
