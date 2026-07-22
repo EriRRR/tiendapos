@@ -1,9 +1,9 @@
 import { useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import { useNavigate } from 'react-router-dom'
-import { ShoppingCart, Eye, EyeOff, AlertTriangle } from 'lucide-react'
+import { Eye, EyeOff, AlertTriangle } from 'lucide-react'
 import { C, T, btn, input } from '../styles/responsive'
-import { supabase } from '../lib/supabase'  // <-- agregado
+import { supabase } from '../lib/supabase'
 
 export default function Login() {
   const { signIn, loading: authLoading } = useAuth()
@@ -15,7 +15,6 @@ export default function Login() {
   const [error, setError] = useState('')
   const [tiendaDeshabilitada, setTiendaDeshabilitada] = useState(null)
 
-  // ── Estados para "Olvidé mi contraseña" ──
   const [vistaOlvide, setVistaOlvide] = useState(false)
   const [emailOlvide, setEmailOlvide] = useState('')
   const [enviandoSol, setEnviandoSol] = useState(false)
@@ -44,7 +43,6 @@ export default function Login() {
     }
   }
 
-  // ── Manejador de solicitud de restablecimiento ──
   const handleOlvidePassword = async (e) => {
     e.preventDefault()
     if (!emailOlvide.trim()) {
@@ -159,7 +157,7 @@ export default function Login() {
               }}
             >
               📞 Soporte: +504 0000-0000<br />
-              ✉️ soporte@tiendapos.com
+              ✉️ soporte@vendix.com
             </div>
             <button
               onClick={() => setTiendaDeshabilitada(null)}
@@ -177,23 +175,33 @@ export default function Login() {
       )}
 
       <div style={{ width: '100%', maxWidth: '22rem' }}>
-        {/* Logo */}
+        {/* Logo - Tamaño aumentado */}
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <div
             style={{
-              width: '3.5rem',
-              height: '3.5rem',
+              width: '6rem',        // 96px (cambia a 8rem, 10rem o 512px si quieres)
+              height: '6rem',
               background: C.primary,
-              borderRadius: '1rem',
+              borderRadius: '1.5rem',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               margin: '0 auto 0.875rem',
+              overflow: 'hidden',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
             }}
           >
-            <ShoppingCart size={24} color="#fff" />
+            <img
+              src="/icon.ico"
+              alt="Logo Vendix"
+              style={{
+                width: '100%',
+                height: '100%',
+                objectFit: 'contain',
+              }}
+            />
           </div>
-          <div style={{ fontSize: T.xl, fontWeight: 800, color: C.text }}>TiendaPos</div>
+          <div style={{ fontSize: '2rem', fontWeight: 800, color: C.text }}>Vendix</div>
           <div
             style={{
               fontSize: T.sm,
@@ -201,7 +209,7 @@ export default function Login() {
               marginTop: '0.25rem',
             }}
           >
-            Sistema de punto de venta
+            Sistema de ventas Vendix
           </div>
         </div>
 
@@ -333,7 +341,6 @@ export default function Login() {
             </div>
           </form>
 
-          {/* ── Link "Olvidé mi contraseña" ── */}
           {!vistaOlvide && (
             <button
               type="button"
@@ -355,7 +362,6 @@ export default function Login() {
             </button>
           )}
 
-          {/* ── Vista "Olvidé mi contraseña" ── */}
           {vistaOlvide && (
             <div
               style={{
@@ -474,7 +480,7 @@ export default function Login() {
             color: C.textMuted,
           }}
         >
-          Acceso solo por invitación · TiendaPos
+          Acceso solo por invitación · Vendix
         </div>
       </div>
 

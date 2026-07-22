@@ -457,8 +457,8 @@ function createWindow() {
       webSecurity:      false,
     },
     icon: isDev
-      ? path.join(__dirname, '../public/icon-512.png')
-      : path.join(process.resourcesPath, 'app/public/icon-512.png'),
+      ? path.join(__dirname, '../public/icon.ico')
+      : path.join(process.resourcesPath, 'app/public/icon.ico'),
     show: false,
     titleBarStyle: 'default',
     title: 'TiendaPos',
