@@ -1,9 +1,9 @@
-appId: com.ertech.tiendapos
-productName: TiendaPos
+appId: com.ertech.vendix
+productName: Vendix
 copyright: "© 2026 Erick Raúl Ramírez Rodríguez — ErTech Solutions"
 
 directories:
-  output: C:\Users\anton\Documents\Proyectos_ErTech\temp-tiemdapos
+  output: C:\Users\anton\Documents\Proyectos_ErTech\temp-vendix
   buildResources: build
 
 files:
@@ -33,7 +33,7 @@ nsis:
   allowToChangeInstallationDirectory: true
   createDesktopShortcut: true
   createStartMenuShortcut: true
-  shortcutName: TiendaPos
+  shortcutName: Vendix
   deleteAppDataOnUninstall: false
   language: 3082
 

@@ -17,7 +17,7 @@ const CHANGELOG = [
     fecha:   'Julio 2026',
     tipo:    'lanzamiento',
     cambios: [
-      'Lanzamiento oficial de TiendaPos',
+      'Lanzamiento oficial de Vendix',
       'Sistema multitenant completo',
       'Punto de venta con carrito y métodos de pago',
       'Gestión de inventario con fotos y atributos',
@@ -85,7 +85,7 @@ export default function Informacion() {
         </div>
         <div style={{ flex: 1 }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: T.xl, fontWeight: 700, color: C.text }}>TiendaPos</span>
+            <span style={{ fontSize: T.xl, fontWeight: 700, color: C.text }}>Vendix</span>
             {chip(`v${VERSION}`, C.primary)}
             {chip('Activo', C.success)}
           </div>
@@ -150,11 +150,11 @@ export default function Informacion() {
           <div style={card}>
             <div style={{ padding: '0.875rem 1rem', borderBottom: `1px solid ${C.borderLight}`, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Info size={15} color={C.primary} />
-              <span style={{ fontSize: T.base, fontWeight: 700, color: C.text }}>Sobre TiendaPos</span>
+              <span style={{ fontSize: T.base, fontWeight: 700, color: C.text }}>Sobre Vendix</span>
             </div>
             <div style={{ padding: '1rem', display: 'flex', flexDirection: 'column', gap: '0.625rem' }}>
               <p style={{ fontSize: T.sm, color: C.textSecondary, lineHeight: 1.7 }}>
-                TiendaPos es un sistema de punto de venta SaaS diseñado específicamente para el mercado hondureño.
+                Vendix es un sistema de punto de venta SaaS diseñado específicamente para el mercado hondureño.
                 Permite gestionar ventas, inventario, clientes y reportes desde cualquier dispositivo,
                 con soporte para trabajar sin conexión a internet.
               </p>
@@ -339,11 +339,11 @@ export default function Informacion() {
             {[
               {
                 titulo: '1. Licencia de uso',
-                texto: 'TiendaPos es un software desarrollado y propiedad de Erick Raúl Ramírez Rodríguez. El acceso al sistema se otorga mediante una suscripción mensual. La licencia es personal, intransferible y válida únicamente para el negocio registrado.',
+                texto: 'Vendix es un software desarrollado y propiedad de Erick Raúl Ramírez Rodríguez. El acceso al sistema se otorga mediante una suscripción mensual. La licencia es personal, intransferible y válida únicamente para el negocio registrado.',
               },
               {
                 titulo: '2. Propiedad intelectual',
-                texto: 'Todo el código fuente, diseño, logotipos y contenido de TiendaPos son propiedad exclusiva del desarrollador. Queda prohibida la copia, distribución, modificación o uso comercial del software sin autorización expresa por escrito.',
+                texto: 'Todo el código fuente, diseño, logotipos y contenido de Vendix son propiedad exclusiva del desarrollador. Queda prohibida la copia, distribución, modificación o uso comercial del software sin autorización expresa por escrito.',
               },
               {
                 titulo: '3. Datos del negocio',
@@ -426,7 +426,7 @@ export default function Informacion() {
               {[
                 { p: '¿Cómo agrego productos al inventario?', r: 'Ve a Inventario → botón "Nuevo producto". Completa nombre, precio, stock y opcionalmente foto y atributos.' },
                 { p: '¿Cómo funciona el modo offline?',       r: 'El sistema guarda los cambios localmente cuando no hay internet y los sincroniza automáticamente al reconectarse.' },
-                { p: '¿Puedo usar el sistema en el teléfono?', r: 'Sí. Abre tiendapos.pages.dev en el navegador del teléfono. También puedes usar el teléfono como escáner QR desde Ventas → Escáner tel.' },
+                { p: '¿Puedo usar el sistema en el teléfono?', r: 'Sí. Abre vendix.pages.dev en el navegador del teléfono. También puedes usar el teléfono como escáner QR desde Ventas → Escáner tel.' },
                 { p: '¿Cómo imprimo etiquetas?',              r: 'Ve a Etiquetas QR, selecciona los productos, configura el tamaño y presiona Imprimir.' },
                 { p: '¿Cómo creo usuarios para mis empleados?', r: 'Ve a Usuarios → Nuevo usuario. Asigna un rol según el acceso que necesitan (Vendedor, Supervisor, etc.).' },
                 { p: '¿Qué pasa si no pago a tiempo?',        r: 'Tendrás un período de gracia configurado. Pasado ese tiempo, el acceso se suspende. Contáctame para regularizar.' },
@@ -445,7 +445,7 @@ export default function Informacion() {
 
           <div style={{ ...card, padding: '1rem', textAlign: 'center' }}>
             <div style={{ fontSize: T.xs, color: C.textMuted, lineHeight: 1.8 }}>
-              <div style={{ fontWeight: 700, color: C.text, marginBottom: '0.25rem' }}>TiendaPos</div>
+              <div style={{ fontWeight: 700, color: C.text, marginBottom: '0.25rem' }}>Vendix</div>
               Desarrollado por <strong>Erick Raúl Ramírez Rodríguez</strong><br />
               Ing. en Ciencias de la Computación · UNICAH 2026<br />
               © {new Date().getFullYear()} ErTech Solutions · Todos los derechos reservados

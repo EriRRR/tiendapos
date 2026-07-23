@@ -340,7 +340,7 @@ export default function Configuracion() {
                   </div>
                   <div>
                     <div style={{ fontSize: T.xs, fontWeight: 700, color: C.text }}>
-                      {form.nombre_tienda || 'TiendaPos'}
+                      {form.nombre_tienda || 'Vendix'}
                     </div>
                     <div style={{ fontSize: '0.625rem', color: C.textMuted }}>
                       Sistema de ventas

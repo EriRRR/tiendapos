@@ -275,7 +275,7 @@ export default function AdminPanel() {
     if (!formNueva.nombre || !formNueva.email) { setError('Nombre y email son obligatorios'); return }
     setGuardando(true); setError('')
     try {
-      const { error } = await supabase.rpc('admin_crear_tienda', { p_admin_user_id: session.user.id, p_nombre_tienda: formNueva.nombre, p_email_tienda: formNueva.email, p_password_temp: 'TiendaPos2024!', p_telefono: formNueva.telefono || null, p_plan: formNueva.plan, p_dias_gracia: parseInt(formNueva.dias_gracia) })
+      const { error } = await supabase.rpc('admin_crear_tienda', { p_admin_user_id: session.user.id, p_nombre_tienda: formNueva.nombre, p_email_tienda: formNueva.email, p_password_temp: 'Vendix2024!', p_telefono: formNueva.telefono || null, p_plan: formNueva.plan, p_dias_gracia: parseInt(formNueva.dias_gracia) })
       if (error) throw new Error(error.message)
       const { data: t2 } = await supabase.from('tenants').select('id').eq('nombre', formNueva.nombre).single()
       if (t2) await supabase.rpc('admin_actualizar_config_tienda', { p_admin_user_id: session.user.id, p_tenant_id: t2.id, p_max_usuarios: parseInt(formNueva.max_usuarios), p_precio_plan: parseFloat(formNueva.precio_plan) })
@@ -310,7 +310,7 @@ export default function AdminPanel() {
             <Store size={18} color="#fff" />
           </div>
           <div>
-            <div style={{ fontSize: T.base, fontWeight: 700 }}>TiendaPos Admin</div>
+            <div style={{ fontSize: T.base, fontWeight: 700 }}>Vendix Admin</div>
             <div style={{ fontSize: T.xs, color: '#94a3b8' }}>Panel de desarrollador</div>
           </div>
         </div>

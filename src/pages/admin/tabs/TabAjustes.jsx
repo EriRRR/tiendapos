@@ -254,7 +254,7 @@ export default function TabAjustes({
           <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '0.75rem', padding: '1.25rem' }}>
             <div style={{ fontSize: T.sm, fontWeight: 700, color: '#f1f5f9', marginBottom: '0.875rem' }}>Información del sistema</div>
             {[
-              { label: 'Producto',      valor: 'TiendaPos v1.0.0'              },
+              { label: 'Producto',      valor: 'Vendix v1.0.0'              },
               { label: 'Frontend',      valor: 'React 19 + Vite 8'             },
               { label: 'Base de datos', valor: 'Supabase · PostgreSQL 15'      },
               { label: 'Hosting',       valor: 'Cloudflare Pages'              },

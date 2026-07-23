@@ -39,7 +39,7 @@ export default function ConfiguracionElectron() {
 
   if (!isElectron) return (
     <div style={{ padding: '2rem', textAlign: 'center', color: C.textMuted }}>
-      Esta sección solo está disponible en la versión instalable de TiendaPos.
+      Esta sección solo está disponible en la versión instalable de Vendix.
     </div>
   )
 
@@ -117,9 +117,9 @@ export default function ConfiguracionElectron() {
             </div>
             <div>
               <label style={lbl}>Base de datos</label>
-              <input value={config.db_name || 'tiendapos'}
+              <input value={config.db_name || 'vendix'}
                 onChange={e => setConfig(p => ({ ...p, db_name: e.target.value }))}
-                placeholder="tiendapos" style={input} />
+                placeholder="vendix" style={input} />
             </div>
             <div>
               <label style={lbl}>Usuario</label>

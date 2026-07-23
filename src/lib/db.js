@@ -1,6 +1,6 @@
 import Dexie from 'dexie'
 
-export const db = new Dexie('TiendaPos')
+export const db = new Dexie('Vendix') // Nombre de la base de datos local
 
 db.version(1).stores({
   // Tablas locales — los campos indexados van aquí

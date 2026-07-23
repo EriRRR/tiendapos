@@ -9,7 +9,7 @@ function crearPool() {
     pool = new Pool({
       host:     store.get('db_host',     'localhost'),
       port:     store.get('db_port',     5432),
-      database: store.get('db_name',     'tiendapos'),
+      database: store.get('db_name',     'vendix'),
       user:     store.get('db_user',     'postgres'),
       password: store.get('db_password', ''),
       max:      10,

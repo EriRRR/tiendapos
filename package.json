@@ -1,5 +1,5 @@
 {
-  "name": "tiendapos",
+  "name": "vendix",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -14,8 +14,8 @@
     "electron:build:preview": "npm run build && cross-env NODE_ENV=production electron ."
   },
   "build": {
-    "appId": "com.ertech.tiendapos",
-    "productName": "TiendaPos"
+    "appId": "com.ertech.vendix",
+    "productName": "Vendix"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.107.0",

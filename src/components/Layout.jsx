@@ -152,7 +152,7 @@ export default function Layout() {
   const isMobile  = width < 768
   const isTablet  = width >= 768 && width < 992
   const collapsed = isTablet
-  const title     = TITLES[location.pathname] || 'TiendaPos'
+  const title     = TITLES[location.pathname] || 'Vendix'
   const esDev     = tenantInfo?.is_admin === true
 
   const linkStyle = (active) => ({
@@ -464,7 +464,7 @@ export default function Layout() {
           }}>
             <div style={{ fontSize: '0.625rem', color: C.textMuted, lineHeight: 1.7 }}>
               <div style={{ fontWeight: 600, color: C.textSecondary }}>
-                TiendaPos v1.0.0
+                Vendix v1.0.0
               </div>
               <div>
                 © {new Date().getFullYear()} Desarrollado por{' '}

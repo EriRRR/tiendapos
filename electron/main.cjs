@@ -78,7 +78,7 @@ function iniciarServidorEscaner() {
 
     ws.send(JSON.stringify({
       tipo:    'conectado',
-      mensaje: 'Escáner conectado a TiendaPos',
+      mensaje: 'Escáner conectado a Vendix',
     }))
   })
 
@@ -148,7 +148,7 @@ function paginaEscaner() {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-  <title>TiendaPos Escáner</title>
+  <title>Vendix Escáner</title>
   <style>
     *{margin:0;padding:0;box-sizing:border-box}
     body{
@@ -236,7 +236,7 @@ function paginaEscaner() {
   </style>
 </head>
 <body>
-  <h1>📦 TiendaPos</h1>
+  <h1>📦 Vendix</h1>
   <div class="badge" id="badge">Conectando con la PC...</div>
 
   <!-- Visor cámara continua -->
@@ -461,7 +461,7 @@ function createWindow() {
       : path.join(process.resourcesPath, 'app/public/icon.ico'),
     show: false,
     titleBarStyle: 'default',
-    title: 'TiendaPos',
+    title: 'Vendix',
   })
 
   const devUrl    = 'http://localhost:5173'
@@ -545,7 +545,7 @@ ipcMain.handle('get-config', () => ({
   modo:         store.get('modo',         'nube'),
   db_host:      store.get('db_host',      'localhost'),
   db_port:      store.get('db_port',      5432),
-  db_name:      store.get('db_name',      'tiendapos'),
+  db_name:      store.get('db_name',      'vendix'),
   db_user:      store.get('db_user',      'postgres'),
   db_password:  store.get('db_password',  ''),
   supabase_url: store.get('supabase_url', ''),

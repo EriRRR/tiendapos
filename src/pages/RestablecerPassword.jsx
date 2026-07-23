@@ -55,7 +55,7 @@ export default function RestablecerPassword() {
             <Lock size={24} color="#fff" />
           </div>
           <div style={{ fontSize: T.xl, fontWeight: 800, color: C.text }}>Nueva contraseña</div>
-          <div style={{ fontSize: T.xs, color: C.textMuted, marginTop: '0.25rem' }}>TiendaPos</div>
+          <div style={{ fontSize: T.xs, color: C.textMuted, marginTop: '0.25rem' }}>Vendix</div>
         </div>
 
         {exito ? (

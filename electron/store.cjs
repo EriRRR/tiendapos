@@ -2,7 +2,7 @@ const { app } = require('electron')
 const path = require('path')
 const fs = require('fs')
 
-const configPath = path.join(app.getPath('userData'), 'tiendapos-config.json')
+const configPath = path.join(app.getPath('userData'), 'vendix-config.json')
 
 function loadConfig() {
   try {

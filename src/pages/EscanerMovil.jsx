@@ -181,7 +181,7 @@ export default function EscanerMovil() {
 
   if (estado === 'error') return (
     <div style={s.body}>
-      <div style={s.titulo}>📦 TiendaPos</div>
+      <div style={s.titulo}>📦 Vendix</div>
       <div style={s.badge('err')}>Sesión inválida o expirada</div>
       <div style={{ fontSize: '0.875rem', color: '#64748b', textAlign: 'center' }}>
         Pide a la PC que genere un nuevo código QR
@@ -191,7 +191,7 @@ export default function EscanerMovil() {
 
   if (estado === 'conectando') return (
     <div style={s.body}>
-      <div style={s.titulo}>📦 TiendaPos</div>
+      <div style={s.titulo}>📦 Vendix</div>
       <div style={s.badge('')}>Conectando...</div>
     </div>
   )
@@ -207,7 +207,7 @@ export default function EscanerMovil() {
         }
       `}</style>
 
-      <div style={s.titulo}>📦 TiendaPos</div>
+      <div style={s.titulo}>📦 Vendix</div>
       {/* Mensaje actualizado: apunta al código de barras */}
       <div style={s.badge(scanning ? 'scan' : 'ok')}>
         {scanning ? '● Escáner activo — apunta al código de barras' : '✓ Conectado a la PC'}

@@ -4,7 +4,7 @@ import { supabase } from '../lib/supabase'
 // Token persistente en sessionStorage — sobrevive re-renders pero NO recarga de página
 // Esto garantiza que en la misma pestaña siempre use el mismo token
 function obtenerOCrearToken(userId) {
-  const key = `tiendapos_session_token_${userId}`
+  const key = `vendix_session_token_${userId}`
   let token = sessionStorage.getItem(key)
   if (!token) {
     token = `${userId}-${Date.now()}-${Math.random().toString(36).slice(2, 9)}`
@@ -14,7 +14,7 @@ function obtenerOCrearToken(userId) {
 }
 
 function limpiarToken(userId) {
-  sessionStorage.removeItem(`tiendapos_session_token_${userId}`)
+  sessionStorage.removeItem(`vendix_session_token_${userId}`)
 }
 
 function obtenerDispositivo() {
