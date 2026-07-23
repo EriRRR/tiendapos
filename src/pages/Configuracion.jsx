@@ -573,7 +573,7 @@ export default function Configuracion() {
                 <div style={{ fontSize: T.xs, color: C.primary, fontWeight: 600, marginBottom: '0.375rem' }}>
                   🔗 URL de tu catálogo público
                 </div>
-                <div style={{ fontFamily: 'monospace', fontSize: T.sm, fontWeight: 700, color: C.primary, wordBreak: 'break-all', marginBottom: '0.5rem' }}>
+                <div style={{ fontFamily: 'monospace', fontSize: T.xs, color: C.primary }}>
                   {`${window.location.origin}/catalogo/${slug || tenantInfo?.tenant_id}`}
                 </div>
 
