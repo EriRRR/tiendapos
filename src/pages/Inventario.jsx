@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react'
-import { Plus, Edit2, Trash2, Search, AlertTriangle, Package, Filter, X, RefreshCw } from 'lucide-react'
+import { Plus, Edit2, Trash2, Search, AlertTriangle, Package, Filter, X, RefreshCw, Download } from 'lucide-react'  // <-- se agregó Download
 import { useInventario } from '../hooks/useInventario'
 import { useConfiguracion } from '../hooks/useConfiguracion'
 import { useCatalogo } from '../hooks/useCatalogo'
@@ -10,6 +10,7 @@ import { usePaginacion } from '../hooks/usePaginacion'
 import Paginacion from '../components/Paginacion'
 import { C, T, S, input, btn, card, badge } from '../styles/responsive'
 import { supabase } from '../lib/supabase'
+import { exportarInventario } from '../lib/exportarExcel'  // <-- NUEVA IMPORTACIÓN
 
 const estadoBadge = (stock, minimo) => {
   if (stock === 0) return badge('out')
@@ -445,6 +446,12 @@ export default function Inventario() {
         </button>
         <button onClick={abrirCrear} style={{ ...btn.base, ...btn.primary }}>
           <Plus size={15} /> {!isMobile && 'Nuevo'}
+        </button>
+        {/* ─── BOTÓN EXPORTAR EXCEL ─── */}
+        <button
+          onClick={() => exportarInventario(productos)}
+          style={{ ...btn.base, ...btn.ghost, fontSize: T.xs }}>
+          <Download size={14} /> Excel
         </button>
       </div>
 

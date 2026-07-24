@@ -4,11 +4,13 @@ import { useAuth } from '../contexts/AuthContext'
 import {
   Search, Plus, X, User, Phone, DollarSign,
   ChevronDown, ChevronUp, AlertTriangle, CheckCircle,
-  Clock, FileText, Wallet, Edit2, UserX, UserCheck
+  Clock, FileText, Wallet, Edit2, UserX, UserCheck,
+  Download  // <-- NUEVO
 } from 'lucide-react'
 import { C, T, btn, card, input } from '../styles/responsive'
-import { usePaginacion } from '../hooks/usePaginacion'     // <-- agregado
-import Paginacion from '../components/Paginacion'         // <-- agregado
+import { usePaginacion } from '../hooks/usePaginacion'
+import Paginacion from '../components/Paginacion'
+import { exportarClientes } from '../lib/exportarExcel'  // <-- NUEVA IMPORTACIÓN
 
 export default function Clientes() {
   const { tenantInfo, session } = useAuth()
@@ -243,9 +245,17 @@ export default function Clientes() {
             </button>
           ))}
         </div>
-        <button onClick={abrirNuevo} style={{ ...btn.base, ...btn.primary }}>
-          <Plus size={15} /> Nuevo cliente
-        </button>
+        <div style={{ display: 'flex', gap: '0.5rem' }}>
+          <button onClick={abrirNuevo} style={{ ...btn.base, ...btn.primary }}>
+            <Plus size={15} /> Nuevo cliente
+          </button>
+          {/* ─── BOTÓN EXPORTAR EXCEL ─── */}
+          <button
+            onClick={() => exportarClientes(clientes)}
+            style={{ ...btn.base, ...btn.ghost, fontSize: T.xs }}>
+            <Download size={14} /> Excel
+          </button>
+        </div>
       </div>
 
       {/* Alerta total deuda — solo para tabs deuda/abonos */}

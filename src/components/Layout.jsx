@@ -4,7 +4,7 @@ import {
   Package, ShoppingCart, QrCode, Scan,
   BarChart2, Settings, Menu, X, Users,
   BookOpen, UserCog, LogOut, AlertTriangle,
-  Clock, Shield, Info, Barcode
+  Clock, Shield, Info, Barcode, History  // <-- NUEVO: History añadido
 } from 'lucide-react'
 import { C, T } from '../styles/responsive'
 import { useAuth } from '../contexts/AuthContext'
@@ -15,11 +15,13 @@ import AlertaSesionDuplicada from './AlertaSesionDuplicada'
 import AlertaLogoutForzado from './AlertaLogoutForzado'
 import AlertaTimeout from './AlertaTimeout'
 import NotificacionesSolicitudes from './NotificacionesSolicitudes'
+import PanelNotificaciones from './PanelNotificaciones'
 import { supabase } from '../lib/supabase'
 import { useConfiguracion } from '../hooks/useConfiguracion'
 
 const NAV = [
   { to: '/ventas',        icon: ShoppingCart, label: 'Ventas'       },
+  { to: '/historial',     icon: History,      label: 'Historial'    }, // <-- NUEVO ITEM
   { to: '/inventario',    icon: Package,      label: 'Inventario'   },
   { to: '/clientes',      icon: Users,        label: 'Clientes'     },
   { to: '/catalogo',      icon: BookOpen,     label: 'Catálogo'     },
@@ -33,6 +35,7 @@ const NAV = [
 const TITLES = {
   '/inventario':    'Inventario',
   '/ventas':        'Punto de venta',
+  '/historial':     'Historial de ventas',   // <-- NUEVO TÍTULO
   '/clientes':      'Clientes y créditos',
   '/catalogo':      'Catálogo de productos',
   '/etiquetas':     'Etiquetas de Barras',
@@ -401,7 +404,8 @@ export default function Layout() {
           </button>
           <span style={{ fontSize: T.md, fontWeight: 700, color: C.text, flex: 1 }}>{title}</span>
 
-          {/* ── Notificaciones de solicitudes ── */}
+          {/* ── Notificaciones ── */}
+          <PanelNotificaciones />
           <NotificacionesSolicitudes />
 
           {/* Badge desarrollador en topbar móvil */}

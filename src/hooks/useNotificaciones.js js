@@ -1,0 +1,93 @@
+import { useState, useEffect, useRef } from 'react'
+import { supabase } from '../lib/supabase'
+import { useAuth } from '../contexts/AuthContext'
+
+export function useNotificaciones() {
+  const { tenantInfo } = useAuth()
+  const [notifs,    setNotifs]    = useState([])
+  const [noLeidas,  setNoLeidas]  = useState(0)
+  const channelRef  = useRef(null)
+  const mountedRef  = useRef(false)
+
+  const cargar = async () => {
+    if (!tenantInfo?.tenant_id) return
+    const { data } = await supabase
+      .from('notificaciones')
+      .select('*')
+      .eq('tenant_id', tenantInfo.tenant_id)
+      .order('created_at', { ascending: false })
+      .limit(50)
+    if (data) {
+      setNotifs(data)
+      setNoLeidas(data.filter(n => !n.leida).length)
+    }
+  }
+
+  const generarStockNotifs = async () => {
+    if (!tenantInfo?.tenant_id) return
+    await supabase.rpc('generar_notificaciones_stock', {
+      p_tenant_id: tenantInfo.tenant_id,
+    })
+    await cargar()
+  }
+
+  const marcarLeida = async (id) => {
+    await supabase.from('notificaciones').update({ leida: true }).eq('id', id)
+    setNotifs(prev => prev.map(n => n.id === id ? { ...n, leida: true } : n))
+    setNoLeidas(prev => Math.max(0, prev - 1))
+  }
+
+  const marcarTodasLeidas = async () => {
+    if (!tenantInfo?.tenant_id) return
+    await supabase.from('notificaciones')
+      .update({ leida: true })
+      .eq('tenant_id', tenantInfo.tenant_id)
+      .eq('leida', false)
+    setNotifs(prev => prev.map(n => ({ ...n, leida: true })))
+    setNoLeidas(0)
+  }
+
+  const eliminar = async (id) => {
+    await supabase.from('notificaciones').delete().eq('id', id)
+    setNotifs(prev => prev.filter(n => n.id !== id))
+  }
+
+  useEffect(() => {
+    if (!tenantInfo?.tenant_id) return
+    if (mountedRef.current) return
+    mountedRef.current = true
+
+    cargar()
+    generarStockNotifs()
+
+    // Generar notificaciones de stock cada 30 minutos
+    const interval = setInterval(generarStockNotifs, 30 * 60 * 1000)
+
+    // Realtime
+    const channel = supabase
+      .channel(`notifs-${tenantInfo.tenant_id}-${Date.now()}`)
+      .on('postgres_changes', {
+        event:  'INSERT',
+        schema: 'public',
+        table:  'notificaciones',
+        filter: `tenant_id=eq.${tenantInfo.tenant_id}`,
+      }, (payload) => {
+        setNotifs(prev => [payload.new, ...prev])
+        setNoLeidas(prev => prev + 1)
+      })
+      .subscribe()
+
+    channelRef.current = channel
+
+    return () => {
+      mountedRef.current = false
+      clearInterval(interval)
+      if (channelRef.current) {
+        supabase.removeChannel(channelRef.current)
+        channelRef.current = null
+      }
+    }
+  }, [tenantInfo?.tenant_id])
+
+  return { notifs, noLeidas, cargar, marcarLeida, marcarTodasLeidas, eliminar }
+}

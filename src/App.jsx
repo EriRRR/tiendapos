@@ -17,7 +17,8 @@ import AdminPanel from './pages/admin/AdminPanel'
 import ConfiguracionElectron from './pages/ConfiguracionElectron'
 import EscanerMovil from './pages/EscanerMovil'
 import Informacion from './pages/Informacion'
-import RestablecerPassword from './pages/RestablecerPassword'   // <-- agregado
+import RestablecerPassword from './pages/RestablecerPassword'
+import Historial from './pages/Historial'   // <-- NUEVA IMPORTACIÓN
 
 export default function App() {
   return (
@@ -48,6 +49,7 @@ export default function App() {
           }>
             <Route path="inventario"        element={<Inventario />}    />
             <Route path="ventas"            element={<Ventas />}        />
+            <Route path="historial"         element={<Historial />}     />
             <Route path="clientes"          element={<Clientes />}      />
             <Route path="catalogo"          element={<Catalogo />}      />
             <Route path="etiquetas"         element={<Etiquetas />}     />

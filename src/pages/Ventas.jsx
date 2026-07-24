@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import { Search, Plus, Minus, Trash2, ShoppingCart, CheckCircle, X, Scan, Barcode, Keyboard, Edit2, User, Smartphone, AlertTriangle, ShieldX, TrendingUp } from 'lucide-react'
+import { Search, Plus, Minus, Trash2, ShoppingCart, CheckCircle, X, Scan, Barcode, Keyboard, Edit2, User, Smartphone, AlertTriangle, ShieldX, TrendingUp, History, FileX, RotateCcw } from 'lucide-react'
 import { Html5Qrcode } from 'html5-qrcode'
 import { QRCodeSVG } from 'qrcode.react'
 import { useInventario } from '../hooks/useInventario'
@@ -10,8 +10,8 @@ import { useScannerSession } from '../hooks/useScannerSession'
 import { useCredito } from '../hooks/useCredito'
 import { isElectron } from '../lib/electronBridge'
 import { C, T, btn, card, input } from '../styles/responsive'
-import { usePaginacion } from '../hooks/usePaginacion'     // <-- agregado
-import Paginacion from '../components/Paginacion'         // <-- agregado
+import { usePaginacion } from '../hooks/usePaginacion'
+import Paginacion from '../components/Paginacion'
 
 export default function Ventas() {
   const { productos, refetch, buscarPorSku } = useInventario()
@@ -579,6 +579,7 @@ export default function Ventas() {
               { val: 'buscar',   icon: Keyboard,   label: 'Buscar'       },
               { val: 'escanear', icon: Barcode,    label: 'Escanear cód. barras'  },
               { val: 'remoto',   icon: Smartphone, label: 'Escáner tel.' },
+              { val: 'historial', icon: History,   label: 'Historial'    }, // <-- NUEVO TAB
             ].map(t => (
               <button key={t.val} onClick={() => setModo(t.val)}
                 style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.375rem', padding: '0.5rem 0.75rem', borderRadius: '0.4375rem', border: 'none', cursor: 'pointer', fontSize: T.sm, fontWeight: 600, background: modo === t.val ? C.primary : 'transparent', color: modo === t.val ? '#fff' : C.textSecondary }}>
@@ -852,6 +853,35 @@ export default function Ventas() {
               )}
             </div>
           )}
+
+          {/* ── Modo historial (NUEVO) ── */}
+          {modo === 'historial' && (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.875rem', flex: 1, overflow: 'hidden' }}>
+              <div style={{ ...card, padding: '1.5rem', textAlign: 'center', flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+                <History size={48} color={C.textMuted} style={{ marginBottom: '0.75rem', opacity: 0.3 }} />
+                <div style={{ fontSize: T.lg, fontWeight: 700, color: C.text, marginBottom: '0.25rem' }}>
+                  Historial de ventas
+                </div>
+                <div style={{ fontSize: T.sm, color: C.textMuted }}>
+                  Esta sección mostrará el resumen de todas las ventas realizadas.
+                  <br />
+                  <span style={{ fontSize: T.xs, color: C.textMuted, opacity: 0.7 }}>Próximamente podrás filtrar por fechas, clientes y más.</span>
+                </div>
+                {/* Placeholder de ejemplo */}
+                <div style={{ marginTop: '1.5rem', width: '100%', maxWidth: '30rem', background: C.bgMuted, borderRadius: '0.5rem', padding: '1rem' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', borderBottom: `1px solid ${C.borderLight}`, paddingBottom: '0.5rem', marginBottom: '0.5rem' }}>
+                    <span style={{ fontSize: T.xs, fontWeight: 600, color: C.textMuted }}>#Venta</span>
+                    <span style={{ fontSize: T.xs, fontWeight: 600, color: C.textMuted }}>Total</span>
+                  </div>
+                  <div style={{ color: C.textMuted, fontSize: T.xs, padding: '0.5rem 0' }}>
+                    <FileX size={20} style={{ margin: '0 auto 0.25rem', opacity: 0.3 }} />
+                    No hay ventas registradas aún.
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
         </div>
 
         {/* Carrito desktop */}
